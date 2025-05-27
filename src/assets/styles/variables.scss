@@ -1,0 +1,30 @@
+$gold: #c6b067;
+$goldV2: #C6AF66;
+$footerBtn: 424343;
+$customGray: #F7F7F8;
+$lightGreyV2: #F7F7F8;
+
+@mixin text40 {
+  font-size: 40px;
+  line-height: 48px;
+}
+@mixin text32 {
+  font-size: 32px;
+  line-height: 44px;
+}
+@mixin text20 {
+  font-size: 20px;
+  line-height: 24px;
+}
+@mixin text16 {
+  font-size: 16px;
+  line-height: 28px;
+}
+@mixin text14 {
+  font-size: 14px;
+  line-height: 20px;
+}
+@mixin text15 {
+  font-size: 15px;
+  line-height: 20px;
+}
