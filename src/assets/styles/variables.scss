@@ -3,9 +3,15 @@ $goldV2: #C6AF66;
 $footerBtn: 424343;
 $customGray: #F7F7F8;
 $lightGreyV2: #F7F7F8;
+$platinum: #E9EAEC;
+$black1: #18191B;
 
 $inputTextV2: #63636F;
 
+@mixin text48 {
+  font-size: 48px;
+  line-height: 52px;
+}
 @mixin text40 {
   font-size: 40px;
   line-height: 48px;
@@ -13,6 +19,14 @@ $inputTextV2: #63636F;
 @mixin text32 {
   font-size: 32px;
   line-height: 44px;
+}
+@mixin text32 {
+  font-size: 32px;
+  line-height: 44px;
+}
+@mixin text24 {
+  font-size: 20px;
+  line-height: 32px;
 }
 @mixin text20 {
   font-size: 20px;
@@ -22,11 +36,15 @@ $inputTextV2: #63636F;
   font-size: 16px;
   line-height: 28px;
 }
+@mixin text15 {
+  font-size: 15px;
+  line-height: 20px;
+}
 @mixin text14 {
   font-size: 14px;
   line-height: 20px;
 }
-@mixin text15 {
-  font-size: 15px;
-  line-height: 20px;
+@mixin text12 {
+  font-size: 12px;
+  line-height: 15px;
 }

@@ -9,6 +9,9 @@
 <style scoped>
 .picture2__wrapper {
   margin-top: 64px;
+  @media (max-width: 700px) {
+    margin-top: 30px;
+  }
   /* height: 504px; */
 }
 .picture2__wrapper img {

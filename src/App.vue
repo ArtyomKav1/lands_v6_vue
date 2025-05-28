@@ -23,5 +23,6 @@ import Feedback from '@/components/Feedback//Feedback.vue'
 <style scoped>
 .app__wrapper {
   background: white;
+  overflow-x: hidden;
 }
 </style>
