@@ -13,7 +13,7 @@ import InputForm from '@/components/Form/InputForm.vue'
     </div>
   </div>
 </template>
-1180
+
 <style scoped lang="scss">
 .form__wrapper {
   max-width: 1588px;
@@ -33,12 +33,12 @@ import InputForm from '@/components/Form/InputForm.vue'
 
     .form__wrapper__background {
       height: 500px;
-      @media (max-width: 760px) {
-        height: 240px;
-      }
       border-radius: 16px;
       position: absolute;
       inset: 0;
+      @media (max-width: 760px) {
+        height: 240px;
+      }
       @media (max-width: 1180px) {
         border-radius: 0px;
       }
