@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import InputForm from '@/components/Form/InputForm.vue'
+
 </script>
 
 <template>

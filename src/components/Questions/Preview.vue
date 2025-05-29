@@ -8,6 +8,29 @@ import 'swiper/css/pagination'
 const swiperRef = ref<any>(null)
 const activeIndex = ref(0)
 
+const completed = ref(false)
+
+
+
+const sendData = ref<string[]>([])
+const sendDataItem = ref<string>('')
+
+const goToNextSlide = () => {
+  sendData.value.push(sendDataItem.value)
+  swiperInstance.value?.slideNext()
+  if( sendData.value.length === questionsData.length){
+    console.log(sendData.value)
+    completed.value = true
+  }
+}
+
+
+
+
+
+
+
+
 const questionsData = [
   {
     id: crypto.randomUUID(),
@@ -32,7 +55,6 @@ const questionsData = [
   },
 ]
 const swiperInstance = ref<any>(null)
-
 const onSwiper = (swiper: any) => {
   swiperInstance.value = swiper
 }
@@ -44,13 +66,13 @@ const onSlideChange = (swiper: any) => {
   activeIndex.value = swiper.activeIndex
 }
 
-const goToNextSlide = () => {
-  swiperInstance.value?.slideNext()
-}
+
 </script>
 
 <template>
+
   <div class="preview__wrapper">
+    <div>
     <div class="preview__counter">Вопрос {{ activeIndex + 1 }} из {{ questionsData.length }}</div>
     <div class="preview__progress-bar">
       <div class="preview__progress-bar__fill" :style="{ width: `${progress}%` }"></div>
@@ -80,18 +102,24 @@ const goToNextSlide = () => {
               class="slide__swiper__wrapper__question"
               v-for="(question, index) in questionData.question"
               :key="index"
+              @click="sendDataItem=question"
+
+              :class="{ current: sendDataItem === question }"
+
+
             >
               {{ question }}
             </div>
           </div>
 
           <div class="slide__swiper__line"></div>
-          <button class="custom-next" @click="goToNextSlide">
+          <button class="custom-next" @click="goToNextSlide" :disabled="!questionData.question.includes(sendDataItem)" >
             {{ activeIndex + 1 !== questionsData.length ? 'Следующий вопрос' : 'Отправить' }}
           </button>
         </div>
       </swiper-slide>
     </swiper>
+    </div>
   </div>
 </template>
 
@@ -166,6 +194,10 @@ const goToNextSlide = () => {
         background: white;
         padding: 12px 32px 12px 22px;
         border-radius: 4px;
+        &.current{
+          border: 2px solid $goldV2;
+          background-color: lighten($goldV2, 40%);
+        }
       }
     }
   }
