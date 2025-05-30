@@ -39,7 +39,7 @@ defineProps<{
             ул. Пушкина 272
           </div>
         </div>
-        <div class="hheader__popup__mobile">
+        <div class="header__popup__mobile">
           <div>+7 (123) 45-67-89</div>
           <div><a href="">Перезвоните мне</a></div>
         </div>
@@ -48,7 +48,59 @@ defineProps<{
   </Transition>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+.header__popup {
+  overflow-y: auto;
+  padding: 20px;
+  position: fixed;
+  z-index: 10;
+  inset: 0px;
+  background: white;
+
+  .header__popup_close {
+    background: white;
+    border: none;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+  }
+  .header__popup__nav {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    font-size: 20px;
+    .header__nav-item {
+      background: none;
+      border: none;
+      font: inherit;
+      cursor: pointer;
+    }
+  }
+  .header__popup__address {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
+    align-items: center;
+    gap: 16px;
+    font-size: 20px;
+    line-height: 24px;
+    margin-top: 20px;
+  }
+  .header__popup__mobile {
+    margin-top: 20px;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    a {
+      color: #c6b067;
+      font-size: 15px;
+    }
+  }
+}
+
 .v-enter-active,
 .v-leave-active {
   transition: all 0.5s ease;
@@ -57,55 +109,5 @@ defineProps<{
 .v-enter-from,
 .v-leave-to {
   transform: translateX(100%);
-}
-.header__popup_close {
-  background: white;
-  border: none;
-  position: absolute;
-  right: 30px;
-  top: 30px;
-}
-.hheader__popup__mobile {
-  margin-top: 20px;
-  font-size: 20px;
-  line-height: 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-}
-.hheader__popup__mobile a {
-  color: #c6b067;
-  font-size: 15px;
-}
-.header__popup {
-  overflow-y: auto;
-  padding: 20px;
-  position: fixed;
-  z-index: 10;
-  inset: 0px;
-  background: white;
-}
-.header__popup__address {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: start;
-  align-items: center;
-  gap: 16px;
-  font-size: 20px;
-  line-height: 24px;
-  margin-top: 20px;
-}
-.header__popup__nav {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  font-size: 20px;
-}
-.header__nav-item {
-  background: none;
-  border: none;
-  font: inherit;
-  cursor: pointer;
 }
 </style>

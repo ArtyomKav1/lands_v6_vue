@@ -30,67 +30,58 @@
 
 <script setup lang="ts"></script>
 
-<style scoped>
+<style scoped lang="scss">
 .footer__wrapper {
   margin-top: 60px;
-  background: #424343;
+  background: $footerBtn;
   border-radius: 20px 20px 0px 0px;
-}
-.footer__limiter {
-  max-width: 1660px;
-  padding: 0 36px;
-  margin: 0 auto;
-  height: 213px;
-  display: flex;
-  justify-content: space-between;
-  color: white;
-  position: relative;
-}
-.footer__limiter h4 {
-  position: absolute;
-  bottom: 10px;
-}
-.footer__wrapper__left {
-
-  font-size: 14px;
-  line-height: 20px;
-  margin-top: 60px;
-}
-
-.footer__wrapper__right {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  font-size: 20px;
-  line-height: 24px;
-  margin: auto 0;
-}
-.footer__wrapper__right__social-network {
-  display: flex;
-  gap: 20px;
-}
-.footer__wrapper__right__social-network > * {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #acada5;
-  border-radius: 16px;
-  width: 52px;
-  height: 52px;
-}
-
-@media (max-width: 540px) {
   .footer__limiter {
-    flex-direction: column;
-  }
-  .footer__limiter{
-    height: 328px;
-  }
-  .footer__wrapper__right{
-    margin-top: 40px;
-  }
-  .footer__wrapper__left{
-    margin-top: 40px;
+    max-width: 1660px;
+    padding: 0 36px;
+    margin: 0 auto;
+    height: 213px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    position: relative;
+    @media (max-width: 540px) {
+      flex-direction: column;
+      height: 328px;
+    }
+    h4 {
+      position: absolute;
+      bottom: 10px;
+    }
+    .footer__wrapper__left {
+      @include text14;
+      margin-top: 60px;
+      @media (max-width: 540px) {
+        margin-top: 40px;
+      }
+    }
+    .footer__wrapper__right {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      @include text20;
+      margin: auto 0;
+      @media (max-width: 540px) {
+        margin-top: 40px;
+      }
+      .footer__wrapper__right__social-network {
+        display: flex;
+        gap: 20px;
+      }
+      .footer__wrapper__right__social-network > * {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: $gray;
+        border-radius: 16px;
+        width: 52px;
+        height: 52px;
+      }
+    }
   }
 }
 </style>

@@ -15,7 +15,7 @@ import Feedback from '@/components/Feedback//Feedback.vue'
     <Pic_1 />
     <Questions />
     <Pic_2 />
-    <Feedback/>
+    <Feedback />
     <Footer />
   </div>
 </template>
