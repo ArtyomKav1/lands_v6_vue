@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import MyBtn from "@/components/UI/MyBtn.vue"
 defineProps<{
   mobileVersion: boolean
 }>()
@@ -10,7 +11,10 @@ const start = () => {
 <template>
   <div class="bottle__wrapper">
     <h1 v-if="!mobileVersion">Ответьте на 5 вопросов и получите горку из шампанского в подарок</h1>
-    <button v-if="mobileVersion" @click="start">Начать</button>
+    <MyBtn class="bottle__wrapper__button" v-if="mobileVersion" @click="start">
+      <p>Начать</p>
+      <img src="@/assets/image/Arrow.svg" alt="Bottle" />
+    </MyBtn>
     <img class="bottle__wrapper__bottle" src="@/assets/image/Bottle.png" alt="Bottle" />
     <img class="bottle__wrapper__background" src="@/assets/image/Ellipse.png" alt="Ellipse" />
   </div>
@@ -39,17 +43,19 @@ const start = () => {
     bottom: 30px;
     left: 40px;
   }
-  button {
-    padding: 14px 24px 14px 32px;
-    background: $goldV2;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    z-index: 5;
+  .bottle__wrapper__button{
     position: absolute;
-    bottom: 30px;
-    left: 40px;
+    z-index: 5;
+    left: 8%;
+    bottom: 8%;
+    display: flex;
+    padding: 14px 32px;
+    gap: 16px;
+    @include text15;
+    cursor: pointer;
+    img{
+      transform: rotateY(180deg);
+    }
   }
   .bottle__wrapper__bottle {
     position: absolute;

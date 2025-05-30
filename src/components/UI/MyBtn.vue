@@ -13,5 +13,6 @@
   border-radius: 4px;
   padding: 8px 16px;
   border: none;
+  transition: all 1s ease 0s;
 }
 </style>

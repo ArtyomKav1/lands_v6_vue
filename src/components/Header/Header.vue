@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import MyBtn from '@/components/UI/MyBtn.vue'
 import Popup from './Popup.vue'
-import { useHeaderStore } from '@/stores/header.ts'
 import { dataNavs } from './Header.constants'
-const HeaderStore = useHeaderStore()
+import { useIndexStore } from '@/stores'
+const IndexStore = useIndexStore()
 </script>
 
 <template>
@@ -12,7 +12,7 @@ const HeaderStore = useHeaderStore()
       <div class="header__wrapper__top">
         <div class="header__wrapper__top__left">
           <div class="header__menu__button__popup">
-            <button @click="HeaderStore.changePopupShow(true)"></button>
+            <button @click="IndexStore.changePopupShowHeader(true)"></button>
           </div>
           <a href="/"
             ><img
@@ -23,7 +23,7 @@ const HeaderStore = useHeaderStore()
           /></a>
         </div>
         <div class="header__wrapper__top__btn">
-          <MyBtn>Позвонить</MyBtn>
+          <MyBtn @click="IndexStore.changePopupShowInput(true)">Позвонить</MyBtn>
         </div>
 
         <div class="header__wrapper__top__right">
@@ -44,7 +44,7 @@ const HeaderStore = useHeaderStore()
           </div>
           <div class="header__wrapper__top__right__mobile">
             <div>+7 (123) 45-67-89</div>
-            <div><a href="#">Перезвоните мне</a></div>
+            <div><a href="#" @click="IndexStore.changePopupShowInput(true)">Перезвоните мне</a></div>
           </div>
         </div>
       </div>
@@ -53,9 +53,9 @@ const HeaderStore = useHeaderStore()
         <button
           v-for="(nav, index) in dataNavs"
           :key="index"
-          @click="HeaderStore.changeCurrentPage(index)"
+          @click="IndexStore.changePageHeader(index)"
           class="header__nav-item"
-          :class="{ active: index === HeaderStore.currentPage }"
+          :class="{ active: index === IndexStore.currentPageHeader }"
         >
           {{ nav }}
         </button>
@@ -119,7 +119,7 @@ const HeaderStore = useHeaderStore()
           }
           button {
             border: none;
-            background: #c6b067;
+            background: $goldV2;
             width: 18px;
             height: 2px;
             position: relative;
@@ -129,7 +129,7 @@ const HeaderStore = useHeaderStore()
               position: absolute;
               top: -5px;
               left: 0px;
-              background: #c6b067;
+              background: $goldV2;
               width: 18px;
               height: 2px;
             }
@@ -177,7 +177,7 @@ const HeaderStore = useHeaderStore()
           gap: 8px;
 
           > * {
-            background: #c6b067;
+            background: $goldV2;
             border-radius: 4px;
             display: flex;
             justify-content: center;
@@ -205,7 +205,7 @@ const HeaderStore = useHeaderStore()
     .header__wrapper__bottom {
       width: 83%;
       margin-bottom: 16px;
-      font-size: 16px;
+      @include text16;
       display: flex;
       justify-content: space-between;
       color: $black1;
@@ -220,7 +220,7 @@ const HeaderStore = useHeaderStore()
         cursor: pointer;
 
         &.active {
-          color: #c6b067;
+          color: $goldV2;
           position: relative;
 
           &::before {
@@ -228,7 +228,7 @@ const HeaderStore = useHeaderStore()
             position: absolute;
             width: 150%;
             height: 2px;
-            background: #c6b067;
+            background: $goldV2;
             bottom: -16px;
             left: -25%;
           }

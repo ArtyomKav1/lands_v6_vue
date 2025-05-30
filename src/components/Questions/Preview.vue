@@ -5,18 +5,24 @@ import { Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { questionsData } from './QuestionForm.constants'
-
+import { useIndexStore } from '@/stores'
+import MyBtn from '@/components/UI/MyBtn.vue'
+const IndexStore = useIndexStore()
 const swiperRef = ref<any>(null)
 const activeIndex = ref(0)
 const completed = ref(false)
+
 const sendData = ref<string[]>([])
+
 const sendDataItem = ref<string>('')
+
 const goToNextSlide = () => {
-  sendData.value.push(sendDataItem.value)
+  IndexStore.sendDataAnswers.push(sendDataItem.value)
   swiperInstance.value?.slideNext()
-  if (sendData.value.length === questionsData.length) {
+  if (IndexStore.sendDataAnswers.length === questionsData.length) {
     console.log(sendData.value)
     completed.value = true
+    IndexStore.changePopupShowInput(true)
   }
 }
 const swiperInstance = ref<any>(null)
@@ -33,60 +39,55 @@ const onSlideChange = (swiper: any) => {
 
 <template>
   <div class="preview__wrapper">
-
-      <h1 class="preview__completed" v-if="completed">Спасибо за ваши ответы</h1>
-      <div v-else>
-        <div class="preview__counter">
-          Вопрос {{ activeIndex + 1 }} из {{ questionsData.length }}
-        </div>
-        <div class="preview__progress-bar">
-          <div class="preview__progress-bar__fill" :style="{ width: `${progress}%` }"></div>
-        </div>
-
-        <swiper
-          ref="swiperRef"
-          @swiper="onSwiper"
-          :modules="[Pagination]"
-          :slides-per-view="1"
-          :space-between="24"
-          :allow-touch-move="false"
-          :simulate-touch="false"
-          @slide-change="onSlideChange"
-        >
-          <swiper-slide v-for="questionData in questionsData" :key="questionData.id">
-            <div class="slide__swiper">
-              <h1>{{ questionData.name }}</h1>
-              <div class="slide__swiper__wrapper">
-                <div
-                  class="slide__swiper__wrapper__question"
-                  v-for="(question, index) in questionData.question"
-                  :key="index"
-                  @click="sendDataItem = question"
-                  :class="{ current: sendDataItem === question }"
-                >
-                  {{ question }}
-                </div>
-              </div>
-
-              <div class="slide__swiper__line"></div>
-              <button
-                class="custom-next"
-                @click="goToNextSlide"
-                :disabled="!questionData.question.includes(sendDataItem)"
-              >
-                {{ activeIndex + 1 !== questionsData.length ? 'Следующий вопрос' : 'Отправить' }}
-              </button>
-            </div>
-          </swiper-slide>
-        </swiper>
+    <h1 class="preview__completed" v-if="completed">Спасибо за ваши ответы</h1>
+    <div v-else>
+      <div class="preview__counter">Вопрос {{ activeIndex + 1 }} из {{ questionsData.length }}</div>
+      <div class="preview__progress-bar">
+        <div class="preview__progress-bar__fill" :style="{ width: `${progress}%` }"></div>
       </div>
 
+      <swiper
+        ref="swiperRef"
+        @swiper="onSwiper"
+        :modules="[Pagination]"
+        :slides-per-view="1"
+        :space-between="24"
+        :allow-touch-move="false"
+        :simulate-touch="false"
+        @slide-change="onSlideChange"
+      >
+        <swiper-slide v-for="questionData in questionsData" :key="questionData.id">
+          <div class="slide__swiper">
+            <h1>{{ questionData.name }}</h1>
+            <div class="slide__swiper__wrapper">
+              <div
+                class="slide__swiper__wrapper__question"
+                v-for="(question, index) in questionData.question"
+                :key="index"
+                @click="sendDataItem = question"
+                :class="{ current: sendDataItem === question }"
+              >
+                {{ question }}
+              </div>
+            </div>
+
+            <div class="slide__swiper__line"></div>
+            <MyBtn
+              class="custom-next slide__swiper__button"
+              @click="goToNextSlide"
+              :disabled="!questionData.question.includes(sendDataItem)"
+            >
+              {{ activeIndex + 1 !== questionsData.length ? 'Следующий вопрос' : 'Отправить' }}
+              <img src="@/assets/image/Arrow.svg" alt="Bottle" />
+            </MyBtn>
+          </div>
+        </swiper-slide>
+      </swiper>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-
-
 .preview__wrapper {
   padding: 32px;
   min-width: 0;
@@ -126,17 +127,19 @@ const onSlideChange = (swiper: any) => {
     gap: 30px;
     position: relative;
 
-    button {
-      padding: 14px 24px 14px 32px;
-      background: $goldV2;
-      color: white;
-      border: none;
-      border-radius: 4px;
+    .slide__swiper__button {
+      @include text15;
+      display: flex;
+      padding: 14px 12px 14px 32px;
+      gap: 16px;
+      justify-content: center;
       width: 235px;
       cursor: pointer;
-      transition: opacity 1s ease 0s;
       &:disabled {
         opacity: 80%;
+      }
+      img {
+        transform: rotateY(180deg);
       }
     }
 

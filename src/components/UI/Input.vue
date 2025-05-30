@@ -1,36 +1,53 @@
 <script setup lang="ts">
 import { IMaskComponent } from 'vue-imask'
-
+import { useIndexStore } from '@/stores'
 import { ref } from 'vue'
 defineProps<{
-    backgroundClass: string
+  theme?: string
 }>()
-const telephonNumber = ref('')
-const name = ref('')
+const IndexStore = useIndexStore()
+const errors = ref<{ name?: string; telNumber?: string }>({})
+const validate = () => {
+  errors.value = {}
 
-const sendData = () => {
-  console.log('name:', name.value, 'telephonNumber:', telephonNumber.value)
+  if (!IndexStore.name.trim()) {
+    errors.value.name = 'Введите имя'
+  }
+
+  if (IndexStore.telNumber.length < 10) {
+    errors.value.telNumber = 'Введите номер'
+  }
+
+  return Object.keys(errors.value).length === 0
+}
+
+const onSend = () => {
+  if (!validate()) return
+  IndexStore.sendData()
 }
 </script>
 
 <template>
   <div class="inputForm__input__block">
-    <div class="inputForm__input__block__item" :class="backgroundClass">
+    <div class="inputForm__input__block__item" :class="theme">
       <label for="">Ваше имя</label>
-      <input type="text" v-model="name" placeholder="Имя" />
+      <input type="text" v-model="IndexStore.name" placeholder="Имя" />
+      <span class="error" v-if="errors.name">{{ errors.name }}</span>
     </div>
 
-    <div class="inputForm__input__block__item" :class="backgroundClass">
+    <div class="inputForm__input__block__item" :class="theme">
       <label for="">Ваш номер телефона</label>
       <IMaskComponent
-        v-model="telephonNumber"
+        v-model="IndexStore.telNumber"
         :lazy="false"
         :placeholder="'+7(___)___-__-__'"
         :mask="'+{7} (000) 000-00-00'"
         class="hcl"
+        inputmode="tel"
       />
+      <span class="error" v-if="errors.telNumber">{{ errors.telNumber }}</span>
     </div>
-    <button @click="sendData">Забронировать</button>
+    <button @click="onSend">Забронировать</button>
   </div>
 </template>
 
@@ -54,12 +71,12 @@ const sendData = () => {
       @include text14;
       padding: 0px 16px;
       background: $platinum;
+      color: $black2;
     }
-    &.dark  {
-      color: $gray;
-    }
-    &.light {
-      color: white;
+    &.swith {
+      @media (min-width: 1180px) {
+        color: white;
+      }
     }
   }
 
@@ -72,5 +89,11 @@ const sendData = () => {
     width: 173px;
     cursor: pointer;
   }
+}
+.error {
+  color: red;
+  opacity: 80%;
+  font-size: 12px;
+  margin-top: 4px;
 }
 </style>

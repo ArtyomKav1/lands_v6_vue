@@ -1,8 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+
+</script>
 
 <template>
   <div class="picture1__wrapper">
     <div class="picture1__container">
+      <img class="picture1__container__light" src="@/assets/image/light.svg" alt="">
       <div class="picture1__container__text">
         <h1>Секрет успешной свадьбы – в спокойных и счастливых молодых</h1>
         <p>
@@ -26,6 +29,9 @@
   padding: 0 16px;
   margin: 0 auto;
   margin-top: 20px;
+  @media (max-width: 1180px) {
+    margin-top: 60px;
+  }
 }
 
 .picture1__container {
@@ -36,6 +42,15 @@
   display: flex;
   gap: 60px;
   position: relative;
+  .picture1__container__light{
+    position: absolute;
+    left: 0;
+    border-radius: 16px 0px 0px 0px ;
+    @media (max-width: 700px) {
+      bottom: 0;
+      transform: rotatex(180deg);
+    }
+  }
 
   .picture1__container__text {
     flex-shrink: 0;

@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { useHeaderStore } from '@/stores/header.ts'
-const HeaderStore = useHeaderStore()
+import { useIndexStore } from '@/stores';
+
+const IndexStore = useIndexStore()
 defineProps<{
   dataNavs: string[]
 }>()
@@ -8,8 +9,8 @@ defineProps<{
 
 <template>
   <Transition>
-    <div v-if="HeaderStore.popupShow" class="header__popup">
-      <button class="header__popup_close" @click="HeaderStore.changePopupShow(false)">
+    <div v-if="IndexStore.headerPopupShow" class="header__popup">
+      <button class="header__popup_close" @click="IndexStore.changePopupShowHeader(false)">
         <img width="24" src="@/assets/image/X.svg" alt="" />
       </button>
 
@@ -25,9 +26,9 @@ defineProps<{
           <button
             v-for="(nav, index) in dataNavs"
             :key="index"
-            @click="HeaderStore.changeCurrentPage(index)"
+            @click="IndexStore.changePageHeader(index)"
             class="header__nav-item"
-            :class="{ active: index === HeaderStore.currentPage }"
+            :class="{ active: index === IndexStore.currentPageHeader }"
           >
             {{ nav }}
           </button>
@@ -41,7 +42,6 @@ defineProps<{
         </div>
         <div class="header__popup__mobile">
           <div>+7 (123) 45-67-89</div>
-          <div><a href="">Перезвоните мне</a></div>
         </div>
       </div>
     </div>
@@ -53,7 +53,7 @@ defineProps<{
   overflow-y: auto;
   padding: 20px;
   position: fixed;
-  z-index: 10;
+  z-index: 99;
   inset: 0px;
   background: white;
 

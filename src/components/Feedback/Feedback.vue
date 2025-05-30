@@ -110,7 +110,10 @@ onMounted(() => {
           border: none;
           border-radius: 100%;
           transition: all 0.3s ease;
-
+          &:focus {
+            outline: none;
+            box-shadow: none;
+          }
           &:hover {
             transform: scale(110%);
           }
@@ -137,7 +140,7 @@ onMounted(() => {
           }
         }
       }
-      .feedback__swiper__slide{
+      .feedback__swiper__slide {
         box-shadow: 0px 8px 16px rgba($color: #222324, $alpha: 0.1);
         height: 280px;
         background: white;
