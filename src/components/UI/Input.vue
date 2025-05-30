@@ -13,8 +13,11 @@ const validate = () => {
   if (!IndexStore.name.trim()) {
     errors.value.name = 'Введите имя'
   }
-
-  if (IndexStore.telNumber.length < 10) {
+  if (IndexStore.name.length > 50) {
+    errors.value.name = 'Максимум 50 символов'
+  }
+  const Number = IndexStore.telNumber.replace(/\D/g, '')
+  if (Number.length < 11) {
     errors.value.telNumber = 'Введите номер'
   }
 
