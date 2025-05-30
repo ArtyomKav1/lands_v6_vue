@@ -100,7 +100,6 @@ onMounted(() => {
 
         .feedback__button {
           user-select: none;
-          cursor: pointer;
           display: flex;
           justify-content: center;
           align-items: center;
