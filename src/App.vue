@@ -11,7 +11,7 @@ import InputPopup from '@/components/GlobalPopup//InputPopup.vue'
 
 <template>
   <div class="app__wrapper">
-    <InputPopup/>
+    <InputPopup />
     <Header />
     <Form />
     <Pic_1 />

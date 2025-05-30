@@ -1,9 +1,5 @@
 <script setup lang="ts">
 import Input from '@/components/UI/Input.vue'
-
-
-
-
 </script>
 <template>
   <div class="inputForm__wrapper">

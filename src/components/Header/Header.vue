@@ -44,7 +44,9 @@ const IndexStore = useIndexStore()
           </div>
           <div class="header__wrapper__top__right__mobile">
             <div>+7 (123) 45-67-89</div>
-            <div><a href="#" @click="IndexStore.changePopupShowInput(true)">Перезвоните мне</a></div>
+            <div>
+              <a href="#" @click="IndexStore.changePopupShowInput(true)">Перезвоните мне</a>
+            </div>
           </div>
         </div>
       </div>

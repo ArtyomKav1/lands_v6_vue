@@ -17,11 +17,13 @@
       <div class="footer__wrapper__right">
         <h2>Мы в соц. сетях</h2>
         <div class="footer__wrapper__right__social-network">
-          <a href="/"><img width="24" height="24" src="@/assets/image/Tg.svg" alt="Telegram" /> </a>
           <a href="/"
-            ><img width="24" height="24" src="@/assets/image/Whatsapp.svg" alt="Telegram" />
+            ><img width="24" height="24" src="@/assets/image/facebook.svg" alt="facebbok" />
           </a>
-          <a href="/"><img width="24" height="24" src="@/assets/image/Tg.svg" alt="Telegram" /> </a>
+          <a href="/"
+            ><img width="24" height="24" src="@/assets/image/Whatsapp.svg" alt="Whatsapp" />
+          </a>
+          <a href="/"><img width="24" height="24" src="@/assets/image/Vk.svg" alt="vk" /> </a>
         </div>
       </div>
     </div>

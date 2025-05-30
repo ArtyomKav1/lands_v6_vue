@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useIndexStore } from '@/stores';
+import { useIndexStore } from '@/stores'
 
 const IndexStore = useIndexStore()
 defineProps<{

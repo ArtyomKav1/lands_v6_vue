@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MyBtn from "@/components/UI/MyBtn.vue"
+import MyBtn from '@/components/UI/MyBtn.vue'
 defineProps<{
   mobileVersion: boolean
 }>()
@@ -43,7 +43,7 @@ const start = () => {
     bottom: 30px;
     left: 40px;
   }
-  .bottle__wrapper__button{
+  .bottle__wrapper__button {
     position: absolute;
     z-index: 5;
     left: 8%;
@@ -53,7 +53,7 @@ const start = () => {
     gap: 16px;
     @include text15;
     cursor: pointer;
-    img{
+    img {
       transform: rotateY(180deg);
     }
   }
