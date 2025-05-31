@@ -49,3 +49,12 @@ $black2: #27282a;
   font-size: 12px;
   line-height: 15px;
 }
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

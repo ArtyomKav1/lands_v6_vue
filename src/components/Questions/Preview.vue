@@ -1,40 +1,40 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Pagination } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/pagination'
-import { questionsData } from './QuestionForm.constants'
-import { useIndexStore } from '@/stores'
-import MyBtn from '@/components/UI/MyBtn.vue'
-const IndexStore = useIndexStore()
-const swiperRef = ref<any>(null)
-const activeIndex = ref(0)
-const completed = ref(false)
+import { ref, computed } from 'vue';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { questionsData } from './QuestionForm.constants';
+import { useIndexStore } from '@/stores';
+import MyBtn from '@/components/UI/MyBtn.vue';
+const IndexStore = useIndexStore();
+const swiperRef = ref<any>(null);
+const activeIndex = ref(0);
+const completed = ref(false);
 
-const sendData = ref<string[]>([])
+const sendData = ref<string[]>([]);
 
-const sendDataItem = ref<string>('')
+const sendDataItem = ref<string>('');
 
 const goToNextSlide = () => {
-  IndexStore.sendDataAnswers.push(sendDataItem.value)
-  swiperInstance.value?.slideNext()
+  IndexStore.sendDataAnswers.push(sendDataItem.value);
+  swiperInstance.value?.slideNext();
   if (IndexStore.sendDataAnswers.length === questionsData.length) {
-    console.log(sendData.value)
-    completed.value = true
-    IndexStore.changePopupShowInput(true)
+    console.log(sendData.value);
+    completed.value = true;
+    IndexStore.changePopupShowInput(true);
   }
-}
-const swiperInstance = ref<any>(null)
+};
+const swiperInstance = ref<any>(null);
 const onSwiper = (swiper: any) => {
-  swiperInstance.value = swiper
-}
+  swiperInstance.value = swiper;
+};
 const progress = computed(() => {
-  return ((activeIndex.value + 1) / questionsData.length) * 100
-})
+  return ((activeIndex.value + 1) / questionsData.length) * 100;
+});
 const onSlideChange = (swiper: any) => {
-  activeIndex.value = swiper.activeIndex
-}
+  activeIndex.value = swiper.activeIndex;
+};
 </script>
 
 <template>

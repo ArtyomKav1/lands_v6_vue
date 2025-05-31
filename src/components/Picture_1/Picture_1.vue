@@ -15,7 +15,6 @@
         <img class="picture1__container__pigeon_1" src="@/assets/image/Pigeon_1.png" alt="pigeon" />
         <img class="picture1__container__pigeon_2" src="@/assets/image/Pigeon_2.png" alt="pigeon" />
         <img class="picture1__container__rings" src="@/assets/image/Rings.png" alt="rings" />
-        <!-- <div class="picture1__container__spot"></div> -->
       </div>
     </div>
   </div>
@@ -106,18 +105,6 @@
       height: auto;
       max-width: 100%;
     }
-    // .picture1__container__spot {
-    //   /* засвет */
-
-    //   position: absolute;
-    //   width: 528px;
-    //   height: 528px;
-    //   left: -170px;
-    //   top: -384px;
-
-    //   background: #fbeedb;
-    //   filter: blur(80px);
-    // }
   }
 }
 

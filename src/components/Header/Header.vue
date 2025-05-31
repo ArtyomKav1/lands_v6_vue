@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import MyBtn from '@/components/UI/MyBtn.vue'
-import Popup from './Popup.vue'
-import { dataNavs } from './Header.constants'
-import { useIndexStore } from '@/stores'
-const IndexStore = useIndexStore()
+import MyBtn from '@/components/UI/MyBtn.vue';
+import Popup from './Popup.vue';
+import { dataNavs } from './Header.constants';
+import { useIndexStore } from '@/stores';
+const IndexStore = useIndexStore();
 </script>
 
 <template>

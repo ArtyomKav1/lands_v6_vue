@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import Bottle from '@/components/Questions/Bottle.vue'
-import Preview from '@/components/Questions/Preview.vue'
-import { ref, watch } from 'vue'
-import { useElementSize } from '@vueuse/core'
-import { useTemplateRef } from 'vue'
+import Bottle from '@/components/Questions/Bottle.vue';
+import Preview from '@/components/Questions/Preview.vue';
+import { ref, watch } from 'vue';
+import { useElementSize } from '@vueuse/core';
+import { useTemplateRef } from 'vue';
 
-const el = useTemplateRef('el')
-const { width } = useElementSize(el)
-const mobileVersion = ref(false)
-const startingQuestion = ref(true)
+const el = useTemplateRef('el');
+const { width } = useElementSize(el);
+const mobileVersion = ref(false);
+const startingQuestion = ref(true);
 
 watch(width, (newWidth) => {
   if (newWidth < 1300) {
-    mobileVersion.value = true
+    mobileVersion.value = true;
   } else {
-    mobileVersion.value = false
+    mobileVersion.value = false;
   }
-})
+});
 </script>
 
 <template>

@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Navigation, Pagination, Scrollbar } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import 'swiper/css/scrollbar'
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Navigation, Pagination, Scrollbar } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
-import { computed, onMounted, ref } from 'vue'
-import { commentsData } from './Feedback.constants'
-const modules = [Navigation, Pagination, Scrollbar]
-const prevEl = ref<HTMLElement | null>(null)
-const nextEl = ref<HTMLElement | null>(null)
+import { computed, onMounted, ref } from 'vue';
+import { commentsData } from './Feedback.constants';
+const modules = [Navigation, Pagination, Scrollbar];
+const prevEl = ref<HTMLElement | null>(null);
+const nextEl = ref<HTMLElement | null>(null);
 const navigation = computed(() => ({
   prevEl: prevEl.value,
   nextEl: nextEl.value,
   disabledClass: 'swiper-button-disabled',
-}))
+}));
 onMounted(() => {
-  navigation.value.prevEl = prevEl.value
-  navigation.value.nextEl = nextEl.value
-})
+  navigation.value.prevEl = prevEl.value;
+  navigation.value.nextEl = nextEl.value;
+});
 </script>
 
 <template>

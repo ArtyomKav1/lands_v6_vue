@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import MyBtn from '@/components/UI/MyBtn.vue'
+import MyBtn from '@/components/UI/MyBtn.vue';
 defineProps<{
-  mobileVersion: boolean
-}>()
-const emit = defineEmits(['start-question'])
+  mobileVersion: boolean;
+}>();
+const emit = defineEmits(['start-question']);
 const start = () => {
-  emit('start-question')
-}
+  emit('start-question');
+};
 </script>
 <template>
   <div class="bottle__wrapper">

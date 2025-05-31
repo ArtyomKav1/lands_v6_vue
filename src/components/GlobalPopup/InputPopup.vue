@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import Input from '../UI/Input.vue'
-import { useIndexStore } from '@/stores/index'
+import Input from '../UI/Input.vue';
+import { useIndexStore } from '@/stores/index';
 
-const IndexStore = useIndexStore()
+const IndexStore = useIndexStore();
 </script>
 
 <template>

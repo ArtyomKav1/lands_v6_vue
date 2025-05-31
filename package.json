@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
-    "format": "prettier --write src/"
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@vueuse/core": "^13.3.0",
@@ -25,7 +25,7 @@
     "@types/node": "^22.15.27",
     "@vitejs/plugin-vue": "^5.2.4",
     "@vue/tsconfig": "^0.7.0",
-    "npm-run-all2": "^7.0.2",
+    "npm-run-all2": "^8.0.4",
     "prettier": "3.5.3",
     "sass": "^1.89.0",
     "sass-loader": "^16.0.5",

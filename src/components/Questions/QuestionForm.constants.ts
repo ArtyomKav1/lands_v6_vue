@@ -20,4 +20,4 @@ export const questionsData = [
     name: 'Месяц',
     question: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май'],
   },
-]
+];
